@@ -6,8 +6,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
 import Project.Bookstore.domain.Book;
 import Project.Bookstore.domain.BookRepository;
+import Project.Bookstore.domain.CategoryRepository;
+import Project.Bookstore.domain.Category;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -17,7 +20,7 @@ public class BookstoreApplication {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
 @Bean
-public CommandLineRunner demo(BookRepository repository) {
+public CommandLineRunner demo(BookRepository repository, CategoryRepository categoryRep) {
 	return (args) -> {
 		Book b1 = new Book("Eka kirja", "Eka kirjailija", 2024, "123456", 19.90);
 		Book b2 = new Book("Toka kirja", "Toka kirjailija", 2020, "124554", 15.90);
@@ -26,6 +29,14 @@ public CommandLineRunner demo(BookRepository repository) {
 		repository.save(b1);
 		repository.save(b2);
 		repository.save(b3);
+		
+				Category c1 = new Category("Scifi", "This is a scifi book");
+				Category c2 = new Category("Horror", "This is a horror book");
+				Category c3 = new Category("Mystery", "This is a mystery book");
+		
+				categoryRep.save(c1);
+				categoryRep.save(c2);
+				categoryRep.save(c3);
 
 		Log.info("all books");
 		for (Book book : repository.findAll()) {
