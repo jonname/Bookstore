@@ -42,6 +42,12 @@ public CommandLineRunner demo(BookRepository repository, CategoryRepository cate
 		for (Book book : repository.findAll()) {
 			Log.info(book.toString());
 		}
+
+			Log.info("Categories:");
+            for (Category category : categoryRep.findAll()) {
+                Log.info(category.toString());
+		}
 	};
-	}
+};
+
 }
