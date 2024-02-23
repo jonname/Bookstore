@@ -30,9 +30,9 @@ public CommandLineRunner demo(BookRepository repository, CategoryRepository cate
 		repository.save(b2);
 		repository.save(b3);
 		
-				Category c1 = new Category("Scifi", "This is a scifi book");
-				Category c2 = new Category("Horror", "This is a horror book");
-				Category c3 = new Category("Mystery", "This is a mystery book");
+				Category c1 = new Category("1", "Scifi");
+				Category c2 = new Category("2", "Horror");
+				Category c3 = new Category("3", "Mystery");
 		
 				categoryRep.save(c1);
 				categoryRep.save(c2);
