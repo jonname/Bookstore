@@ -15,7 +15,8 @@ xmlns:th="http://www.thymeleaf.org">
                 <td th:text="${book.publicationYear}"></ts>
                 <td th:text="${book.isbn}"></ts>
                 <td th:text="${book.price}"></ts>
-                    <td><a th:href="@{/delete/{id}(id=${book.id})}"</a>Delete</a></td>
+                <td th:text="${book.category.name}"></td>
+                <td><a th:href="@{/delete/{id}(id=${book.id})}"</a>Delete</a></td>
             </tr>
         </tbody>
     </table>
