@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <title>Booklist</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+    <h1>Hello <span sec:authentication="name"></span>!</h1>
     <h1>Books</h1>
     <table>
         <tbody>
@@ -16,10 +17,17 @@ xmlns:th="http://www.thymeleaf.org">
                 <td th:text="${book.isbn}"></ts>
                 <td th:text="${book.price}"></ts>
                 <td th:text="${book.category.name}"></td>
-                <td><a th:href="@{/delete/{id}(id=${book.id})}"</a>Delete</a></td>
+                <td sec:authorize="hasRole('ADMIN')"><a
+                    th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
             </tr>
         </tbody>
     </table>
     <a href="/add" class="btn btn-primary">Add book</a>
+    <br>
+    <br>
+    <form th:action="@{/logout}" method=
+"post">
+<input type="submit" value="Sign Out"/>
+</form>
 </body>
 </html>

@@ -13,7 +13,7 @@ import Project.Bookstore.domain.CategoryRepository;
 
 @Controller
 public class BookController {
-
+	
 @Autowired
 private BookRepository bookRep;
 @Autowired
@@ -46,4 +46,19 @@ private CategoryRepository categoryRep;
         return "redirect:/booklist";
     } 
 	
+    @RequestMapping(value={"/", "/home"})
+	public String homeSecure() {
+		return "home";
+	}  
+    
+    @RequestMapping(value="/hello")
+	public String helloSecure() {
+		return "hello";
+	}
+    
+    @RequestMapping(value="/login")
+	public String login() {
+		return "login";
+	}    
+
 }

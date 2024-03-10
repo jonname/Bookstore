@@ -12,6 +12,8 @@ import Project.Bookstore.domain.BookRepository;
 import Project.Bookstore.domain.CategoryRepository;
 import Project.Bookstore.domain.Category;
 
+
+
 @SpringBootApplication
 public class BookstoreApplication {
 	private static final Logger Log = LoggerFactory.getLogger(BookstoreApplication.class);

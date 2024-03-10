@@ -18,6 +18,7 @@ import Project.Bookstore.domain.BookRepository;
 
 
 
+
 @CrossOrigin
 @Controller
 public class BookRestController {
@@ -43,9 +44,6 @@ public class BookRestController {
     @RequestMapping(value="/books", method=RequestMethod.POST)
     public @ResponseBody Book saveBookRest(@RequestBody Book book) {
         return repository.save(book);
+
     }
-    
-    
-
-
 }
