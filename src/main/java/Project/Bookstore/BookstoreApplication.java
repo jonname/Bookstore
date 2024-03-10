@@ -6,10 +6,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import Project.Bookstore.domain.Book;
 import Project.Bookstore.domain.BookRepository;
 import Project.Bookstore.domain.CategoryRepository;
+import Project.Bookstore.domain.User;
+import Project.Bookstore.domain.UserRepository;
 import Project.Bookstore.domain.Category;
 
 
@@ -21,8 +24,9 @@ public class BookstoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
+	
 @Bean
-public CommandLineRunner demo(BookRepository repository, CategoryRepository categoryRep) {
+public CommandLineRunner demo(BookRepository repository, CategoryRepository categoryRep, UserRepository urepository) {
 	return (args) -> {
 
 		Category c1 = new Category("1", "Scifi");
@@ -40,8 +44,13 @@ public CommandLineRunner demo(BookRepository repository, CategoryRepository cate
 		repository.save(b1);
 		repository.save(b2);
 		repository.save(b3);
-		
 
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		
+		User user1 = new User("user", passwordEncoder.encode("password"), "USER");
+		User user2 = new User("admin", passwordEncoder.encode("adminpassword"), "ADMIN");
+		urepository.save(user1);
+		urepository.save(user2);
 
 		Log.info("all books");
 		for (Book book : repository.findAll()) {
