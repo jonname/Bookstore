@@ -21,7 +21,7 @@ public class WebSecurityConfig {
 	public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 
 		http.authorizeHttpRequests(authorize -> authorize
-			.requestMatchers("/", "/home").permitAll()
+			.requestMatchers("/", "/booklist").permitAll()
 			.anyRequest().authenticated()
 		)
 		.formLogin(formlogin -> formlogin
@@ -35,11 +35,13 @@ public class WebSecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
+        List<UserDetails> users = new ArrayList();
         UserDetails user = User.withDefaultPasswordEncoder()
             .username("user")
             .password("password")
             .roles("USER")
             .build();
+            users.add(user);
 
 
 
@@ -48,9 +50,6 @@ public class WebSecurityConfig {
             .password("adminpassword")
             .roles("ADMIN")
             .build();
-
-            List<UserDetails> users = new ArrayList();
-            users.add(user);
             users.add(admin);
 
         return new InMemoryUserDetailsManager(users);

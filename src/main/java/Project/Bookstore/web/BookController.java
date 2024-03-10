@@ -48,7 +48,7 @@ private CategoryRepository categoryRep;
 	
     @RequestMapping(value={"/", "/home"})
 	public String homeSecure() {
-		return "home";
+		return "redirect:/booklist";
 	}  
     
     @RequestMapping(value="/hello")
