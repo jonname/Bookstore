@@ -69,6 +69,14 @@
 	</dependencies>
 	<build>
 		<plugins>
+		<plugin>
+            <groupId>com.heroku.sdk</groupId>
+            <artifactId>heroku-maven-plugin</artifactId>
+            <version>3.0.4</version>
+            <configuration>
+                <appName>YOUR_APP_NAME</appName>
+            </configuration>
+        </plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
