@@ -2,6 +2,8 @@ package Project.Bookstore;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -32,6 +34,15 @@ public void createNewBook() {
     Book book = new Book("Hyvä kirja", "Hyvä kirjailija", 2024, 1234, 100, cRepository.findByCategory("Horror").get(0));
     repository.save(book);
 assertThat(book.getId()).isNotNull();
+}
+
+@Test
+public void deleteBook() {
+    Book book = repository.findById(Long.valueOf(1)).get();
+    repository.delete(book);
+    Optional<Book> deleteBook = repository.findById(Long.valueOf(0));
+    assertThat(deleteBook).isEmpty();
+
 }
 
 }
