@@ -35,6 +35,11 @@ public Book(String title, String author, int publicationYear, String isbn, doubl
 }
 
 
+public Book(String string, String string2, int i, int j, int k, Category category2) {
+    //TODO Auto-generated constructor stub
+}
+
+
 public Long getId() {
     return id;
 }
