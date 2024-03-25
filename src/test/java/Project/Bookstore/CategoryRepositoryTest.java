@@ -16,7 +16,7 @@ private CategoryRepository repository;
 
 @Test
 public void findByNameShouldReturnCategory() {
-    List<Category> category =  repository.findByCategory("Horror");
+    List<Category> category =  repository.findByName("Horror");
 }
 
 }

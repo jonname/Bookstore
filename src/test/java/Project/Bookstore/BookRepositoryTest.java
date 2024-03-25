@@ -30,8 +30,8 @@ public void findByTitleShouldReturnBook() {
 
 @Test
 public void createNewBook() {
-    List<Category> category = cRepository.findByCategory("Horror");
-    Book book = new Book("Hyvä kirja", "Hyvä kirjailija", 2024, 1234, 100, cRepository.findByCategory("Horror").get(0));
+    List<Category> categories = cRepository.findByName("Horror");
+    Book book = new Book("Hyvä kirja", "Hyvä kirjailija", 2024, 1234, 100, cRepository.findByName("Horror").get(0));
     repository.save(book);
 assertThat(book.getId()).isNotNull();
 }
